@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const API_KEY = 'patQsUUVvd5DbRBnY.613d805a328b71f5d3966c59994035a0db1a89f0dd029b61e1717539f9902a4b';
+const API_KEY = process.env.AIRTABLE_API_KEY || 'patQsUUVvd5DbRBnY.613d805a328b71f5d3966c59994035a0db1a89f0dd029b61e1717539f9902a4b';
 const BASE_ID = 'applI3tAeZR7UltWP';
 const PRACTICES_TABLE = 'tblAHxLRVfmZ58gKA';
 
