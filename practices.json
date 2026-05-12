@@ -52896,6 +52896,13 @@
       }
     },
     {
+      "id": "recXoHRytlsZHYSfO",
+      "createdTime": "2026-05-12T09:09:32.000Z",
+      "fields": {
+        "practice_URL": "/ophthalmology-practices-details?recordId=recXoHRytlsZHYSfO"
+      }
+    },
+    {
       "id": "recXosQRIt6MVWkeV",
       "createdTime": "2026-03-13T04:47:31.000Z",
       "fields": {
@@ -57696,7 +57703,7 @@
         "Stability Score": 75.8,
         "City_St": "CAPE CORAL, FL",
         "Stability Score Delta": 6.4,
-        "Practice Name": "EYE ASSOCIATES OF MANATEE, LLP - NAPLES",
+        "Practice Name": "THE EYE ASSOCIATES (INCLUDING BOWDEN EYE, SCHNEIDER EYE & WELLNESS, JANET A. BETCHKAL, MD)",
         "latitude": 26.273861,
         "longitude": -81.77318,
         "org_pac_id": "4688664535"
@@ -89473,6 +89480,13 @@
         "latitude": 34.0079589,
         "longitude": -78.2921649,
         "org_pac_id": "ADDR_NC_SUPPLY_14DOCTORSCIR"
+      }
+    },
+    {
+      "id": "recvenIqIH2WNbKq7",
+      "createdTime": "2026-05-12T09:09:36.000Z",
+      "fields": {
+        "practice_URL": "/ophthalmology-practices-details?recordId=recvenIqIH2WNbKq7"
       }
     },
     {
