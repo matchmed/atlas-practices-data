@@ -9,7 +9,7 @@ const FILTER = encodeURIComponent(`AND({alt_name} != '', {Retention Score} != ''
 
 const FIELDS = [
   'org_pac_id',
-  'alt_name',
+  'Practice Name',
   'City_St',
   'Retention Score',
   'Retention Score Delta',
