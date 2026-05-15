@@ -4,22 +4,41 @@ const API_KEY = process.env.AIRTABLE_API_KEY || 'patQsUUVvd5DbRBnY.613d805a328b7
 const BASE_ID = 'applI3tAeZR7UltWP';
 const PRACTICES_TABLE = 'tblAHxLRVfmZ58gKA';
 
-const FIELDS = ['org_pac_id','Practice Name','City_St','Stability Score','Stability Score Delta','latest_roster_size','latitude','longitude','phone','practice_URL']
-  .map(f => 'fields[]=' + encodeURIComponent(f)).join('&');
+// Only named + scored practices — excludes surrogate ADDR_ records and solo practices
+const FILTER = encodeURIComponent(`AND({alt_name} != '', {Retention Score} != '')`);
 
-const BASE_URL = `https://api.airtable.com/v0/${BASE_ID}/${PRACTICES_TABLE}?${FIELDS}&pageSize=100`;
+const FIELDS = [
+  'org_pac_id',
+  'alt_name',
+  'City_St',
+  'Retention Score',
+  'Retention Score Delta',
+  'Experience Level',
+  'latest_roster_size',
+  'Total_Physicians_All_Time',
+  'short_tenure_departure_count',
+  'veteran_count',
+  'temporal_cluster_flag',
+  'tenure_similarity_flag',
+  'latitude',
+  'longitude',
+  'phone',
+  'website',
+].map(f => 'fields[]=' + encodeURIComponent(f)).join('&');
+
+const BASE_URL = `https://api.airtable.com/v0/${BASE_ID}/${PRACTICES_TABLE}?filterByFormula=${FILTER}&${FIELDS}&pageSize=100`;
 
 async function airtableFetch(url) {
-  const res = await fetch(url, { 
-    headers: { Authorization: `Bearer ${API_KEY}` } 
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${API_KEY}` }
   });
-  if (!res.ok) throw new Error(`Airtable error ${res.status}`);
+  if (!res.ok) throw new Error(`Airtable error ${res.status}: ${await res.text()}`);
   return res.json();
 }
 
 async function fetchAllPractices() {
   console.log('Fetching practices from Airtable...');
-  
+
   let allRecords = [];
   let offset = null;
   let pageCount = 0;
