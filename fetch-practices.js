@@ -4,9 +4,6 @@ const API_KEY = process.env.AIRTABLE_API_KEY || 'patQsUUVvd5DbRBnY.613d805a328b7
 const BASE_ID = 'applI3tAeZR7UltWP';
 const PRACTICES_TABLE = 'tblAHxLRVfmZ58gKA';
 
-// Only named + scored practices — excludes surrogate ADDR_ records and solo practices
-const FILTER = encodeURIComponent(`AND({alt_name} != '', {Retention Score} != '')`);
-
 const FIELDS = [
   'org_pac_id',
   'Practice Name',
@@ -26,7 +23,7 @@ const FIELDS = [
   'website',
 ].map(f => 'fields[]=' + encodeURIComponent(f)).join('&');
 
-const BASE_URL = `https://api.airtable.com/v0/${BASE_ID}/${PRACTICES_TABLE}?filterByFormula=${FILTER}&${FIELDS}&pageSize=100`;
+const BASE_URL = `https://api.airtable.com/v0/${BASE_ID}/${PRACTICES_TABLE}?${FIELDS}&pageSize=100`;
 
 async function airtableFetch(url) {
   const res = await fetch(url, {
